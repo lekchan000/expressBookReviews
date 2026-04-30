@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-let books = require("./booksdb.js");
+const books = require('./booksdb.js');
 const regd_users = express.Router();
 
 let users = [];
@@ -58,8 +58,47 @@ regd_users.post("/login", (req, res) => {
 
 // Add a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
-  //Write your code here
-  return res.status(300).json({ message: "Yet to be implemented" });
+  const isbn = req.params.isbn;
+  const review = req.body.review;
+  const username = req.session.authorization.username;  // Get username from session
+
+  // Check if review is provided
+  if (!review) {
+    return res.status(400).json({ message: "Review text is required" });
+  }
+
+  let book = books[isbn];  // Retrieve books object associated with isbn
+
+  if (book) {  // Check if book exists
+    // Add or update review for the user (stored by username)
+    book["reviews"][username] = review;
+
+    // Update books details in 'books' object
+    books[isbn] = book;
+    res.send(`Book with the isbn ${isbn} updated with review from user ${username}.`);
+  } else {
+    // Respond if book with specified isbn is not found
+    res.status(404).json({ message: "Unable to find book!" });
+  }
+});
+
+// Delete a book review
+regd_users.delete("/auth/review/:isbn", (req, res) => {
+  const isbn = req.params.isbn;
+  const username = req.session.authorization.username;
+
+  if (books[isbn]) {
+    let book = books[isbn];
+    // Check if the user has a review for this book
+    if (book.reviews[username]) {
+      delete book.reviews[username];
+      return res.status(200).send(`Review for the ISBN ${isbn} posted by the user ${username} deleted.`);
+    } else {
+      return res.status(404).json({ message: "No review found for this user on this book." });
+    }
+  } else {
+    return res.status(404).json({ message: "Book not found." });
+  }
 });
 
 module.exports.authenticated = regd_users;

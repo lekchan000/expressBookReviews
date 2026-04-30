@@ -1,0 +1,5 @@
+$ curl -X PUT "http://localhost:5000/customer/auth/review/1" \
+     -H "Content-Type: application/json" \
+     -d '{"review": "This book is an absolute masterpiece!"}' \
+     -b cookie.txt
+Book with the isbn 1 updated with review from user testuser.
