@@ -1,2 +1,5 @@
-$ curl -X GET "http://localhost:5000/isbn/1"
+Lekch@Lekchan MINGW64 ~/Learning/Backend/expressBookReviews/final_project (main)
+$ curl --request GET 'http://localhost:5000/isbn/1'
 {"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}
+Lekch@Lekchan MINGW64 ~/Learning/Backend/expressBookReviews/final_project (main)
+$ 

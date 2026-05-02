@@ -1,5 +1,8 @@
-$ curl -X PUT "http://localhost:5000/auth/review/1" \                                                                                                       
-     -H "Content-Type: application/json" \
-     -d '{"review": "This book is an absolute masterpiece!"}' \
-     -b cookie.txt
+Lekch@Lekchan MINGW64 ~/Learning/Backend/expressBookReviews/final_project (main)
+$ curl --request PUT 'http://localhost:5000/auth/review/1' \
+--header 'Content-Type: application/json' \
+--data '{"review": "This is an amazing book!"}' \
+-b cookie.txt
 Book with the isbn 1 updated with review from user testuser.
+Lekch@Lekchan MINGW64 ~/Learning/Backend/expressBookReviews/final_project (main)
+$ 

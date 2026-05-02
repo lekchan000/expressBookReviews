@@ -1,4 +1,7 @@
-$ curl -X POST "http://localhost:5000/register" \
-     -H "Content-Type: application/json" \
-     -d '{"username": "testuser", "password": "mypassword"}'
+Lekch@Lekchan MINGW64 ~/Learning/Backend/expressBookReviews/final_project (main)
+$ curl --request POST 'http://localhost:5000/register' \
+--header 'Content-Type: application/json' \
+--data '{"username": "testuser", "password": "mypassword"}'
 {"message":"User successfully registered. Now you can login"}
+Lekch@Lekchan MINGW64 ~/Learning/Backend/expressBookReviews/final_project (main)
+$ 

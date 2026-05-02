@@ -1,3 +1,6 @@
-$ curl -X DELETE "http://localhost:5000/auth/review/1" \
-     -b cookie.txt
+Lekch@Lekchan MINGW64 ~/Learning/Backend/expressBookReviews/final_project (main)
+$ curl --request DELETE 'http://localhost:5000/auth/review/1' \
+-b cookie.txt
 Review for the ISBN 1 posted by the user testuser deleted.
+Lekch@Lekchan MINGW64 ~/Learning/Backend/expressBookReviews/final_project (main)
+$ 
